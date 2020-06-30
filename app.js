@@ -1,6 +1,6 @@
-// const Manager = require("./lib/Manager");
-// const Engineer = require("./lib/Engineer");
-// const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 // const path = require("path");
 // const fs = require("fs");
@@ -8,32 +8,31 @@ const inquirer = require("inquirer");
 // const OUTPUT_DIR = path.resolve(__dirname, "output");
 // const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
+// const render = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-
 const mgrQuestions = [
     {
         message: "What is your manager's name?",
-        name: "mgrName",
+        name: "name",
         type: "input"
     },
     {
         message: "What is your manager's ID?",
-        name: "mgrID",
+        name: "id",
         type: "input"
     },
     {
         message: "What is your manager's email?",
-        name: "mgrEmail",
+        name: "email",
         type: "input"
     },
     {
         message: "What is your manager's office number?",
-        name: "mgrNum",
+        name: "officeNumber",
         type: "input"
     },
 ]
@@ -50,22 +49,22 @@ const eeTypeQuestion = [
 const engineerQuestions = [
     {
         message: "What is your engineer's name?",
-        name: "engrName",
+        name: "name",
         type: "input"
     },
     {
         message: "What is your engineer's ID?",
-        name: "engrID",
+        name: "id",
         type: "input"
     },
     {
         message: "What is your engineer's email?",
-        name: "engrEmail",
+        name: "email",
         type: "input"
     },
     {
         message: "What is your engineer's GitHub username?",
-        name: "engrGitHub",
+        name: "github",
         type: "input"
     },
 ]
@@ -73,66 +72,66 @@ const engineerQuestions = [
 const internQuestions = [
     {
         message: "What is your intern's name?",
-        name: "internName",
+        name: "name",
         type: "input"
     },
     {
         message: "What is your intern's ID?",
-        name: "internID",
+        name: "id",
         type: "input"
     },
     {
         message: "What is your intern's email?",
-        name: "internEmail",
+        name: "email",
         type: "input"
     },
     {
         message: "What is your intern's school?",
-        name: "internSchool",
+        name: "school",
         type: "input"
     },
 ]
 
+const employees = [];
 
-let manager = new Employee;
-let engineer = new Employee;
-let intern = new Employee;
-
-// console.log(manager);
-
-
-
-async function createTeam() {
+async function createMgr() {
+    // Asks for mgr info and creates new mgr based on user inputs
     const mgrData = await inquirer.prompt(mgrQuestions)
-    // console.log(mgrData);
+    let newMgr = new Manager(mgrData.name, mgrData.id, mgrData.email, mgrData.officeNumber);
 
-    manager = new Employee(mgrData.mgrName, mgrData.mgrID, mgrData.mgrEmail)
-    console.log(manager);
+    employees.push(newMgr);
+    addEmployees();
+}
 
+async function addEmployees() {
+
+    // Asks what type of team member to add next
     let { employeeType } = await inquirer.prompt(eeTypeQuestion)
-    console.log(employeeType);
 
+    // Asks for engr info and creates new engr based on user inputs
     if (employeeType === 'Engineer') {
         let engrData = await inquirer.prompt(engineerQuestions);
-        engineer = new Employee(engrData.engrName, engrData.engrID, engrData.engrEmail)
-        console.log(engineer);
+        let newEngr = new Engineer(engrData.name, engrData.id, engrData.email, engrData.github);
 
-        // Push to employee array
-        // Need to call eeTypeQuestion again 
+        employees.push(newEngr);
+        addEmployees();
 
+    // Asks for intern info and creates new intern based on user inputs
     } else if (employeeType === 'Intern') {
         let internData = await inquirer.prompt(internQuestions);
-        intern = new Employee(internData.internName, internData.internID, internData.internEmail)
-        console.log(intern);
+        newIntern = new Intern(internData.name, internData.id, internData.email, internData.school)
 
-        // Push to employee array
-        // Need to call eeTypeQuestion again
+        employees.push(newIntern);
+        addEmployees();
+
+    // Exits function
     } else {
+        console.log(employees);
         return;
     }
 }
 
-createTeam();
+createMgr();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
