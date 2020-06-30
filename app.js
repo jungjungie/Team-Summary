@@ -50,22 +50,22 @@ const eeTypeQuestion = [
 const engineerQuestions = [
     {
         message: "What is your engineer's name?",
-        name: "engineerName",
+        name: "engrName",
         type: "input"
     },
     {
         message: "What is your engineer's ID?",
-        name: "engineerID",
+        name: "engrID",
         type: "input"
     },
     {
         message: "What is your engineer's email?",
-        name: "engineerEmail",
+        name: "engrEmail",
         type: "input"
     },
     {
         message: "What is your engineer's GitHub username?",
-        name: "engineerGitHub",
+        name: "engrGitHub",
         type: "input"
     },
 ]
@@ -93,7 +93,6 @@ const internQuestions = [
     },
 ]
 
-
 function Employee (employeeName, employeeId, employeeEmail) {
     this.name = employeeName;
     this.id = employeeId;
@@ -112,9 +111,38 @@ function Employee (employeeName, employeeId, employeeEmail) {
     };
 }
 
-var manager = new Employee("Esther", 55, "example@email.com");
+let manager = new Employee;
+let engineer = new Employee;
+let intern = new Employee;
 
-console.log(manager);
+// console.log(manager);
+
+
+
+async function createTeam() {
+    const mgrData = await inquirer.prompt(mgrQuestions)
+    // console.log(mgrData);
+
+    manager = new Employee(mgrData.mgrName, mgrData.mgrID, mgrData.mgrEmail)
+    console.log(manager);
+
+    let { employeeType } = await inquirer.prompt(eeTypeQuestion)
+    console.log(employeeType);
+
+    if (employeeType === 'Engineer') {
+        let engrData = await inquirer.prompt(engineerQuestions);
+        engineer = new Employee(engrData.engrName, engrData.engrID, engrData.engrEmail)
+        console.log(engineer);
+    } else if (employeeType === 'Intern') {
+        let internData = await inquirer.prompt(internQuestions);
+        intern = new Employee(internData.internName, internData.internID, internData.internEmail)
+        console.log(intern);
+    } else {
+        // Exit function
+    }
+}
+
+createTeam();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
