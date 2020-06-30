@@ -14,6 +14,86 @@ const inquirer = require("inquirer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+
+const mgrQuestions = [
+    {
+        message: "What is your manager's name?",
+        name: "mgrName",
+        type: "input"
+    },
+    {
+        message: "What is your manager's ID?",
+        name: "mgrID",
+        type: "input"
+    },
+    {
+        message: "What is your manager's email?",
+        name: "mgrEmail",
+        type: "input"
+    },
+    {
+        message: "What is your manager's office number?",
+        name: "mgrNum",
+        type: "input"
+    },
+]
+
+const eeTypeQuestion = [
+    {
+        message: "Which type of team member would you like to add?",
+        name: "employeeType",
+        type: "list",
+        choices: ["Engineer", "Intern", "I don't want to add any more team members"]
+    }
+]
+
+const engineerQuestions = [
+    {
+        message: "What is your engineer's name?",
+        name: "engineerName",
+        type: "input"
+    },
+    {
+        message: "What is your engineer's ID?",
+        name: "engineerID",
+        type: "input"
+    },
+    {
+        message: "What is your engineer's email?",
+        name: "engineerEmail",
+        type: "input"
+    },
+    {
+        message: "What is your engineer's GitHub username?",
+        name: "engineerGitHub",
+        type: "input"
+    },
+]
+
+const internQuestions = [
+    {
+        message: "What is your intern's name?",
+        name: "internName",
+        type: "input"
+    },
+    {
+        message: "What is your intern's ID?",
+        name: "internID",
+        type: "input"
+    },
+    {
+        message: "What is your intern's email?",
+        name: "internEmail",
+        type: "input"
+    },
+    {
+        message: "What is your intern's school?",
+        name: "internSchool",
+        type: "input"
+    },
+]
+
+
 function Employee (employeeName, employeeId, employeeEmail) {
     this.name = employeeName;
     this.id = employeeId;
