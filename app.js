@@ -96,6 +96,8 @@ const employees = [];
 
 async function createMgr() {
     // Asks for mgr info and creates new mgr based on user inputs
+    console.log('Please build your team:')
+    
     const mgrData = await inquirer.prompt(mgrQuestions)
     let newMgr = new Manager(mgrData.name, mgrData.id, mgrData.email, mgrData.officeNumber);
 
