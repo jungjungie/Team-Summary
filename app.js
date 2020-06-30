@@ -8,7 +8,7 @@ const inquirer = require("inquirer");
 // const OUTPUT_DIR = path.resolve(__dirname, "output");
 // const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-// const render = require("./lib/htmlRenderer");
+const render = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -93,23 +93,6 @@ const internQuestions = [
     },
 ]
 
-function Employee (employeeName, employeeId, employeeEmail) {
-    this.name = employeeName;
-    this.id = employeeId;
-    this.email = employeeEmail;
-    this.getName = function() {
-        return this.name;
-    };
-    this.getId = function() {
-        return this.id;
-    };
-    this.getEmail = function() {
-        return this.email;
-    };
-    this.getRole = function() {
-        
-    };
-}
 
 let manager = new Employee;
 let engineer = new Employee;
@@ -133,12 +116,19 @@ async function createTeam() {
         let engrData = await inquirer.prompt(engineerQuestions);
         engineer = new Employee(engrData.engrName, engrData.engrID, engrData.engrEmail)
         console.log(engineer);
+
+        // Push to employee array
+        // Need to call eeTypeQuestion again 
+
     } else if (employeeType === 'Intern') {
         let internData = await inquirer.prompt(internQuestions);
         intern = new Employee(internData.internName, internData.internID, internData.internEmail)
         console.log(intern);
+
+        // Push to employee array
+        // Need to call eeTypeQuestion again
     } else {
-        // Exit function
+        return;
     }
 }
 
