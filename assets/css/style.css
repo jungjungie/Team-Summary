@@ -14,7 +14,6 @@ h2 {
 h3 {
     font-size: 1.2em;
     font-style: italic;
-    line-height: 0em;
 }
 
 #teamHdr {
@@ -40,22 +39,26 @@ h3 {
 
 .card {
     min-width: 250px;
+    border-radius: 10px;
+    border: 1px solid #e2e2e2;
 }
 
 .card-body {
     background:#f2f2f2;
+    border-radius: 0px 0px 10px 10px;
 }
 
 li {
     color: #555;
+    font-weight: 700;
 }
 
-a {
+li a {
     text-decoration: none;
-    color: #196751;
+    color: #259a7a;
 }
 
 a:hover {
     text-decoration: none;
-    color: #259a7a;
+    color: #31be99;
 }
