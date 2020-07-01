@@ -7,7 +7,7 @@ h1 {
 }
 
 .mgrHdr {
-    background:#ff5349;
+    background:#3f704d;
     color: white;
 }
 
@@ -21,9 +21,8 @@ h1 {
     color: white;
 }
 
-.card-header {
-    /* background: #ffae42;
-    color: white; */
+.card {
+    min-width: 250px;
 }
 
 .card-body {
