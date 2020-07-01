@@ -11,13 +11,38 @@ const fs = require("fs");
 const render = require("./lib/htmlRenderer");
 
 function validateName(name) {
-    if(typeof name !== 'string') {
-        return ('Enter a valid name.')
+    if (name.match(/[a-zA-Z]/)) {
+        return true;
     }
-    if(name == '') {
-        return ('Enter a valid name.')
+    return ('Enter a valid name.')
+}
+
+function validateEmail(email) {
+    if (email.match(/\S+@\S+\.\S+/)) {
+        return true;
     }
-    return true;
+    return ('Enter a valid email address.')
+}
+
+function validateId(id) {
+    if (id.match(/^[1-9]\d*$/)) {
+        return true;
+    }
+    return ('Enter a valid id (numbers only).')
+}
+
+function validateLettNum(lettNum) {
+    if (lettNum.match(/^[A-Za-z0-9_-]+$/)) {
+        return true;
+    } 
+    return ('Input must include letters and/numbers.')
+}
+
+function validateSchool(school) {
+    if (school.match(/^[A-Za-z\s]+$/)) {
+        return true;
+    } 
+    return ('Enter a valid school name.')
 }
 
 const mgrQuestions = [
@@ -30,17 +55,20 @@ const mgrQuestions = [
     {
         message: "What is your manager's ID?",
         name: "id",
-        type: "number"
+        type: "input",
+        validate: validateId
     },
     {
         message: "What is your manager's email?",
         name: "email",
-        type: "input"
+        type: "input",
+        validate: validateEmail
     },
     {
         message: "What is your manager's office number?",
         name: "officeNumber",
-        type: "input"
+        type: "input",
+        validate: validateLettNum
     },
 ]
 
@@ -57,22 +85,26 @@ const engineerQuestions = [
     {
         message: "What is your engineer's name?",
         name: "name",
-        type: "input"
+        type: "input",
+        validate: validateName
     },
     {
         message: "What is your engineer's ID?",
         name: "id",
-        type: "input"
+        type: "input",
+        validate: validateId
     },
     {
         message: "What is your engineer's email?",
         name: "email",
-        type: "input"
+        type: "input",
+        validate: validateEmail
     },
     {
         message: "What is your engineer's GitHub username?",
         name: "github",
-        type: "input"
+        type: "input",
+        validate: validateLettNum
     },
 ]
 
@@ -80,22 +112,26 @@ const internQuestions = [
     {
         message: "What is your intern's name?",
         name: "name",
-        type: "input"
+        type: "input",
+        validate: validateName
     },
     {
         message: "What is your intern's ID?",
         name: "id",
-        type: "input"
+        type: "input",
+        validate: validateId
     },
     {
         message: "What is your intern's email?",
         name: "email",
-        type: "input"
+        type: "input",
+        validate: validateEmail
     },
     {
         message: "What is your intern's school?",
         name: "school",
-        type: "input"
+        type: "input",
+        validate: validateSchool
     },
 ]
 
@@ -133,7 +169,7 @@ async function addEmployees() {
         employees.push(newIntern);
         addEmployees();
 
-    // Exits function
+    // Creates or overwrites team.html with user inputs
     } else {
         console.log(employees);
 
@@ -147,19 +183,3 @@ async function addEmployees() {
 }
 
 createMgr();
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
