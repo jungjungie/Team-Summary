@@ -10,16 +10,27 @@ const fs = require("fs");
 
 const render = require("./lib/htmlRenderer");
 
+function validateName(name) {
+    if(typeof name !== 'string') {
+        return ('Enter a valid name.')
+    }
+    if(name == '') {
+        return ('Enter a valid name.')
+    }
+    return true;
+}
+
 const mgrQuestions = [
     {
         message: "What is your manager's name?",
         name: "name",
-        type: "input"
+        type: "input",
+        validate: validateName
     },
     {
         message: "What is your manager's ID?",
         name: "id",
-        type: "input"
+        type: "number"
     },
     {
         message: "What is your manager's email?",
