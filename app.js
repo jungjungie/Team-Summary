@@ -124,11 +124,11 @@ async function addEmployees() {
 
     // Exits function
     } else {
-        // console.log(employees);
+        console.log(employees);
 
         fs.writeFile('output/team.html', render(employees), function (err) {
             if (err) throw err;
-            console.log('Success! Team.html was created in output folder.')
+            console.log('Success! File team.html was created in output folder.')
         })
         
         return;

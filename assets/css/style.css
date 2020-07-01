@@ -1,0 +1,31 @@
+#teamHdr {
+    background: #3d4849;
+}
+
+h1 {
+    color: white;
+}
+
+.mgrHdr {
+    background:#ff5349;
+    color: white;
+}
+
+.engrHdr {
+    background:#10a5f5;
+    color: white;
+}
+
+.internHdr {
+    background:#ffae42;
+    color: white;
+}
+
+.card-header {
+    /* background: #ffae42;
+    color: white; */
+}
+
+.card-body {
+    background:#f2f2f2
+}
