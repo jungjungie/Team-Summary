@@ -1,23 +1,40 @@
-#teamHdr {
-    background: #3d4849;
+body {
+    font-family: 'Poppins', sans-serif;
 }
 
 h1 {
-    color: white;
+    color: #444;
+    font-size: 3em;
 }
 
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-style: italic;
+    line-height: 0em;
+}
+
+#teamHdr {
+    background: #d4e9e2;
+    box-shadow: 0px 1px 6px #d3d3d3;
+    border-radius: 0;
+    border-bottom: 1px solid #d1d3d4;
+}
 .mgrHdr {
-    background:#3f704d;
+    background:#196751;
     color: white;
 }
 
 .engrHdr {
-    background:#10a5f5;
+    background:#2e856e;
     color: white;
 }
 
 .internHdr {
-    background:#ffae42;
+    background:#5ca08e;
     color: white;
 }
 
@@ -26,5 +43,19 @@ h1 {
 }
 
 .card-body {
-    background:#f2f2f2
+    background:#f2f2f2;
+}
+
+li {
+    color: #555;
+}
+
+a {
+    text-decoration: none;
+    color: #196751;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #259a7a;
 }
