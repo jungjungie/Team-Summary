@@ -1,6 +1,8 @@
 # Team-Summary
 This Node CLI utilizes the [Inquirer package](https://www.npmjs.com/package/inquirer) to take in information for 3 types of employees (manager / engineer / intern). From this information, an HTML webpage is generated that displays each individual's name, role, id and email. This app also makes use of ES6 classes to take in a role-specific property that is displayed. Role-specific properties include the office number for the manager, a GitHub profile link for engineers, and a school name for interns.
 
+<div style="text-align:center"><img src="assets/images/webpage.jpg" /></div>
+
 
 ## Table of Contents
 * [Installation](#Installation)
