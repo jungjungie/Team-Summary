@@ -2,11 +2,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
-// const path = require("path");
 const fs = require("fs");
-
-// const OUTPUT_DIR = path.resolve(__dirname, "output");
-// const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
@@ -28,14 +24,14 @@ function validateId(id) {
     if (id.match(/^[1-9]\d*$/)) {
         return true;
     }
-    return ('Enter a valid id (numbers only).')
+    return ('Enter a valid id number.')
 }
 
 function validateLettNum(lettNum) {
     if (lettNum.match(/^[A-Za-z0-9_-]+$/)) {
         return true;
     } 
-    return ('Input must include letters and/numbers.')
+    return ('Input must include letters and/or numbers.')
 }
 
 function validateSchool(school) {
